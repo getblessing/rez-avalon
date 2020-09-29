@@ -8,7 +8,7 @@ description = "The safe post-production pipeline"
 
 _data = {
     "label": "Avalon",
-    "icon": "{root}/res/icons/ico/avalon.ico"
+    "icon": "{root}/payload/res/icons/ico/avalon.ico"
 }
 
 version = "5.7.66.158"
@@ -99,7 +99,7 @@ def pre_commands():
 def commands():
     env = globals()["env"]
     resolve = globals()["resolve"]
-    env.PYTHONPATH.prepend("{root}")
+    env.PYTHONPATH.prepend("{root}/payload")
 
     # MongoDB
     env.AVALON_MONGO = "{env.HOUSE_PIPELINE_MONGO}"
@@ -108,17 +108,17 @@ def commands():
 
     # DCC App Setup
     if "maya" in resolve:
-        env.PYTHONPATH.append("{root}/setup/maya")
+        env.PYTHONPATH.append("{root}/payload/setup/maya")
         env.AVALON_APP = "maya"
         env.AVALON_APP_NAME = "maya"
 
     if "houdini" in resolve:
-        env.HOUDINI_SCRIPT_PATH.append("{root}/res/houdini")
+        env.HOUDINI_SCRIPT_PATH.append("{root}/payload/res/houdini")
         env.AVALON_APP = "houdini"
         env.AVALON_APP_NAME = "houdini"
 
     if "nuke" in resolve:
-        env.NUKE_PATH.append("{root}/setup/nuke/nuke_path")
+        env.NUKE_PATH.append("{root}/payload/setup/nuke/nuke_path")
         env.AVALON_APP = "nuke"
         env.AVALON_APP_NAME = "nuke"
 
