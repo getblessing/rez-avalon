@@ -11,7 +11,7 @@ _data = {
     "icon": "{root}/payload/res/icons/ico/avalon.ico"
 }
 
-version = "5.7.66.158"
+version = "5.7.66.167.ozark"
 
 
 authors = [
