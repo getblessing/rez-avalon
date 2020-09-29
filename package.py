@@ -1,5 +1,4 @@
 
-early = globals()["early"]
 late = globals()["late"]
 
 
@@ -12,51 +11,35 @@ _data = {
     "icon": "{root}/res/icons/ico/avalon.ico"
 }
 
-
-@early()
-def __payload():
-    import os
-    from earlymod import util
-
-    def get_version(data):
-        import subprocess
-        data["version"] = subprocess.check_output(
-            ["python", "setup.py", "--version"],
-            universal_newlines=True,
-            cwd=data["repo"],
-        ).strip()
-
-    local = {
-        "path": os.path.sep.join([os.environ["MY_DEVS"], "avalon-core"]),
-        "tag": "localdev",
-    }
-    remote = {
-        "url": "https://github.com/MoonShineVFX/avalon-core.git",
-        "branch": "production",
-        "tag": "91e31cac94cb814d4829c5ba26b0e53dde8f3d7d",
-    }
-    return util.git_payload(
-        local=local,
-        remote=remote,
-        callbacks=[get_version]
-    )
+version = "5.7.66.158"
 
 
-@early()
-def version():
-    data = globals()["this"].__payload
-
-    version_str = data["version"]
-    branch_name = data["branch"]
-
-    major, minor, patch = version_str.split(".")
-    return "%s-%s.%s.%s" % (branch_name, major, minor, patch)
-
-
-@early()
-def authors():
-    data = globals()["this"].__payload
-    return data["authors"]
+authors = [
+    "Marcus Ottosson",
+    "Roy Nieterau",
+    "David Lai",
+    "LegacyID1991",
+    "wijnand",
+    "davidlatwe",
+    "aardschok",
+    "Toke Jepsen",
+    "iLLiCiTiT",
+    "LegacyID",
+    "wikoreman",
+    "Jakub Jezek",
+    "Wijnand Koreman",
+    "Milan Kolar",
+    "Jasper van Nieuwenhuizen",
+    "Jakub Trllo",
+    "marcus",
+    "noflame",
+    "Ondřej Samohel",
+    "davidpower",
+    "Ondrej Samohel",
+    "Toke Stuart Jepsen",
+    "antirotor",
+    "rebeccalin209",
+]
 
 
 @late()
@@ -86,14 +69,7 @@ requires = [
 
 
 private_build_requires = ["rezutil-1"]
-
-
-@early()
-def build_command():
-    data = globals()["this"].__payload
-    return "python -m rezutil build {root} --quiet".format(
-        root=data["repo"],
-    )
+build_command = "python {root}/rezbuild.py {install}"
 
 
 def pre_commands():
