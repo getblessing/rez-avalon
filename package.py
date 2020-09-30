@@ -6,40 +6,22 @@ name = "avalon"
 
 description = "The safe post-production pipeline"
 
+version = "5.7.66.167.ozark"
+
+requires = [
+    # Dependencies
+    "house",
+    "pymongo",
+    "Qt.py",
+]
+
+private_build_requires = ["rezutil-1"]
+build_command = "python {root}/rezbuild.py {install}"
+
 _data = {
     "label": "Avalon",
     "icon": "{root}/payload/res/icons/ico/avalon.ico"
 }
-
-version = "5.7.66.167.ozark"
-
-
-authors = [
-    "Marcus Ottosson",
-    "Roy Nieterau",
-    "David Lai",
-    "LegacyID1991",
-    "wijnand",
-    "davidlatwe",
-    "aardschok",
-    "Toke Jepsen",
-    "iLLiCiTiT",
-    "LegacyID",
-    "wikoreman",
-    "Jakub Jezek",
-    "Wijnand Koreman",
-    "Milan Kolar",
-    "Jasper van Nieuwenhuizen",
-    "Jakub Trllo",
-    "marcus",
-    "noflame",
-    "Ondřej Samohel",
-    "davidpower",
-    "Ondrej Samohel",
-    "Toke Stuart Jepsen",
-    "antirotor",
-    "rebeccalin209",
-]
 
 
 @late()
@@ -58,18 +40,6 @@ def tools():
                 break
 
     return _tools
-
-
-requires = [
-    # Dependencies
-    "house",
-    "pymongo",
-    "Qt.py",
-]
-
-
-private_build_requires = ["rezutil-1"]
-build_command = "python {root}/rezbuild.py {install}"
 
 
 def pre_commands():
@@ -162,3 +132,31 @@ def post_commands():
             "_Lobby",
             "{env.AVALON_APP}",
         ])
+
+
+authors = [
+    "Marcus Ottosson",
+    "Roy Nieterau",
+    "David Lai",
+    "LegacyID1991",
+    "wijnand",
+    "davidlatwe",
+    "aardschok",
+    "Toke Jepsen",
+    "iLLiCiTiT",
+    "LegacyID",
+    "wikoreman",
+    "Jakub Jezek",
+    "Wijnand Koreman",
+    "Milan Kolar",
+    "Jasper van Nieuwenhuizen",
+    "Jakub Trllo",
+    "marcus",
+    "noflame",
+    "Ondřej Samohel",
+    "davidpower",
+    "Ondrej Samohel",
+    "Toke Stuart Jepsen",
+    "antirotor",
+    "rebeccalin209",
+]
