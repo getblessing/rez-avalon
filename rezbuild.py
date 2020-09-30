@@ -34,7 +34,13 @@ def build(source_path, build_path, install_path, targets=None):
     # Deploy
     # (we cannot use setup.py to install avalon, there are additional files
     # currently not being installed by it)
-    shutil.copytree(source_root, dst)
+    lib.copy_dir(source_root, dst)
+
+    # Additional
+    dst_root = os.path.dirname(dst)
+    for dir_name in ["apps", "config"]:
+        dst_dir = os.path.join(dst_root, dir_name)
+        lib.copy_dir(os.path.join(source_path, dir_name), dst_dir)
 
 
 if __name__ == "__main__":

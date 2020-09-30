@@ -122,6 +122,18 @@ def commands():
         env.AVALON_APP = "nuke"
         env.AVALON_APP_NAME = "nuke"
 
+    # Avalon application toml
+    # (for file copying and creating default dirs)
+    env.PATH.prepend("{root}/apps")
+
+    # Ozark setup
+    if "ozark" in resolve:
+        # Register location 'avalon' to mongozark
+        env.REZ_CONFIG_FILE.append("{root}/config/rezconfig.py")
+        # Merlin command line tools
+        env.PATH.prepend("{root}/bin")
+        env.PYTHONPATH.prepend("{root}/python")
+
 
 def post_commands():
     import os
