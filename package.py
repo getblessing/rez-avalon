@@ -100,9 +100,10 @@ def commands():
     if "ozark" in resolve:
         # Register location 'avalon' to mongozark
         env.REZ_CONFIG_FILE.append("{root}/config/rezconfig.py")
-        # Merlin command line tools
+        # Avalon profile template
+        env.REZ_OZARK_TEMPLATE = "{root}/template"
+        # Avalon tools
         env.PATH.prepend("{root}/bin")
-        env.PYTHONPATH.prepend("{root}/python")
 
 
 def post_commands():
