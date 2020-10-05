@@ -1,7 +1,6 @@
 
 import os
 import sys
-import shutil
 
 
 url_prefix = "https://github.com/MoonShineVFX/avalon-core/archive"
@@ -20,7 +19,7 @@ def build(source_path, build_path, install_path, targets=None):
     dst = os.path.normpath(dst)
 
     if os.path.isdir(dst):
-        shutil.rmtree(dst)
+        lib.clean(dst)
 
     filename = "%s.zip" % os.environ["REZ_BUILD_PROJECT_VERSION"]
 
