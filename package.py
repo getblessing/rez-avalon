@@ -6,13 +6,14 @@ name = "avalon"
 
 description = "The safe post-production pipeline"
 
-version = "5.7.66.167.ozark"
+version = "5.7.66.169.ozark"
 
 requires = [
     # Dependencies
     "house",
     "pymongo",
     "Qt.py",
+    "terminal",
 ]
 
 private_build_requires = ["rezutil-1"]
@@ -29,6 +30,7 @@ def tools():
     in_context = globals()["in_context"]
     # Avalon tools
     _tools = [
+        "terminal",
         "loader",
     ]
 
@@ -95,6 +97,8 @@ def commands():
     # Avalon application toml
     # (for file copying and creating default dirs)
     env.PATH.prepend("{root}/apps")
+    # Avalon tools
+    env.PATH.prepend("{root}/bin")
 
     # Ozark setup
     if "ozark" in resolve:
@@ -102,8 +106,6 @@ def commands():
         env.REZ_CONFIG_FILE.append("{root}/config/rezconfig.py")
         # Avalon profile template
         env.REZ_OZARK_TEMPLATE = "{root}/template"
-        # Avalon tools
-        env.PATH.prepend("{root}/bin")
 
 
 def post_commands():

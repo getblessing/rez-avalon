@@ -1,5 +1,6 @@
 
 import os
+import getpass
 late = globals()["late"]
 
 
@@ -10,6 +11,14 @@ _data = {
     # Allzpark
     "label": "%s",
     "icon": "{root}/resources/icon.png"
+}
+_init_project_doc = {
+    # default doc for init
+    "data": {
+        "root": os.path.dirname(os.getcwd()),
+        "role": {"member": [getpass.getuser().lower()]}
+    },
+    "config": {},
 }
 
 requires = [
@@ -36,7 +45,7 @@ def project_document():
     db = client[os.environ["AVALON_DB"]]
     col = db[this.name]
 
-    return col.find_one({"type": "project"})
+    return col.find_one({"type": "project"}) or _init_project_doc
 
 
 @late()
