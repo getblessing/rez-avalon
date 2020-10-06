@@ -13,4 +13,6 @@ $ inventory --save
 $ party --init
 $ echo "Edit package.py"
 $ party --at avalon
+$ echo "Launch Allzpark"
+$ park
 ```
