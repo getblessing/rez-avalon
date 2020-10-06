@@ -1,10 +1,18 @@
-schema = "avalon-core:config-2.0"
+schema = "avalon-core:config-1.0"
 
 [template]
 # Arg {user} has been removed.
 # Better work file management tool is required for opt-in {user}.
 work = "{root}/{project}/Avalon/{silo}/{asset}/work/{task}/{app}"
 publish = "{root}/{project}/Avalon/{silo}/{asset}/publish/{subset}/v{version:0>3}/{representation}"
+
+[[apps]]
+name = "maya2018"
+label = "Maya 2018"
+
+[[apps]]
+name = "houdini18"
+label = "Houdini 18"
 
 [[tasks]]
 name = "modeling"

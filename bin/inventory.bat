@@ -1,2 +1,2 @@
 @echo off
-python -u -m avalon.inventory %*
+python %~pd0inventory.py %*
