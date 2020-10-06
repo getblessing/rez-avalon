@@ -1,6 +1,5 @@
 
 import os
-import getpass
 late = globals()["late"]
 
 
@@ -11,14 +10,6 @@ _data = {
     # Allzpark
     "label": "%s",
     "icon": "{root}/resources/icon.png"
-}
-_init_project_doc = {
-    # default doc for init
-    "data": {
-        "root": os.path.dirname(os.getcwd()),
-        "role": {"member": [getpass.getuser().lower()]}
-    },
-    "config": {},
 }
 
 requires = [
@@ -44,8 +35,13 @@ def project_document():
     client = MongoClient(os.environ["AVALON_MONGO"])
     db = client[os.environ["AVALON_DB"]]
     col = db[this.name]
+    doc = col.find_one({"type": "project"})
 
-    return col.find_one({"type": "project"}) or _init_project_doc
+    if doc is None:
+        raise Exception("Project document not found in database, is project "
+                        "been initiated ?")
+    else:
+        return doc
 
 
 @late()
