@@ -100,17 +100,18 @@ def commands():
     # Avalon tools
     env.PATH.prepend("{root}/bin")
 
+
+def post_commands():
+    import os
+    env = globals()["env"]
+    resolve = globals()["resolve"]
+
     # Ozark setup
     if "ozark" in resolve:
         # Register location 'avalon' to mongozark
         env.REZ_CONFIG_FILE.append("{root}/config/rezconfig.py")
         # Avalon profile template
         env.REZ_OZARK_TEMPLATE = "{root}/template"
-
-
-def post_commands():
-    import os
-    env = globals()["env"]
 
     # (NOTE) convert it into `list` or it will always return True when
     #   checking __contains__.
