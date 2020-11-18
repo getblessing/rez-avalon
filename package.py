@@ -99,6 +99,8 @@ def commands():
     env.PATH.prepend("{root}/apps")
     # Avalon tools
     env.PATH.prepend("{root}/bin")
+    # Allzpark env plugin (Avalon launcher)
+    env.PYTHONPATH.prepend("{root}/python")
 
 
 def post_commands():
@@ -110,6 +112,7 @@ def post_commands():
     if "ozark" in resolve:
         # Register location 'avalon' to mongozark
         env.REZ_CONFIG_FILE.append("{root}/config/rezconfig.py")
+        env.ALLZPARK_CONFIG_FILE = "{root}/config/allzparkconfig.py"
         # Avalon profile template
         env.REZ_OZARK_TEMPLATE = "{root}/template"
 

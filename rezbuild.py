@@ -37,7 +37,7 @@ def build(source_path, build_path, install_path, targets=None):
 
     # Additional
     dst_root = os.path.dirname(dst)
-    for dir_name in ["apps", "bin", "config", "template"]:
+    for dir_name in ["apps", "bin", "python", "config", "template"]:
         dst_dir = os.path.join(dst_root, dir_name)
         lib.copy_dir(os.path.join(source_path, dir_name), dst_dir)
 
